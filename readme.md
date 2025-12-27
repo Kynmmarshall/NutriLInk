@@ -1,0 +1,1 @@
+link user to restaurant and other companies having excess food
