@@ -9,6 +9,39 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+  
+  # State Management
+  provider: ^6.1.2
+  
+  # HTTP & API
+  http: ^1.2.0
+  
+  # Storage
+  shared_preferences: ^2.2.2
+  
+  # UI & Icons
+  google_fonts: ^6.1.0
+  font_awesome_flutter: ^10.7.0
+  flutter_svg: ^2.0.10
+  
+  # Location & Maps
+  geolocator: ^11.0.0
+  geocoding: ^3.0.0
+  
+  # Notifications
+  flutter_local_notifications: ^17.0.0
+  
+  # Image Handling
+  image_picker: ^1.0.7
+  cached_network_image: ^3.3.1
+  
+  # Utils
+  intl_phone_number_input: ^0.7.4
+  timeago: ^3.6.1
+  url_launcher: ^6.2.5
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +50,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  
+  # Fonts (will use Google Fonts for dynamic loading)
+  
+  # Enable generation of localization files
+  generate: true
