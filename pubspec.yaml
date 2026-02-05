@@ -51,6 +51,12 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   
+  # assets
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/logo/
+  
   # Fonts (will use Google Fonts for dynamic loading)
   
   # Enable generation of localization files
