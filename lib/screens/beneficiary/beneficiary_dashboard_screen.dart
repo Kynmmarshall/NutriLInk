@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../l10n/app_localizations.dart';
 import '../../models/food_request_model.dart';
 import '../../providers/food_provider.dart';
 import '../../providers/request_provider.dart';
@@ -17,17 +18,18 @@ class BeneficiaryDashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final foodProvider = context.watch<FoodProvider>();
     final requestProvider = context.watch<RequestProvider>();
+    final strings = AppLocalizations.of(context)!;
 
     return ListView(
       padding: const EdgeInsets.all(24),
       children: [
         Text(
-          'Find Meals Nearby',
+          strings.findMealsNearby,
           style: Theme.of(context).textTheme.displaySmall,
         ),
         const SizedBox(height: 8),
         Text(
-          'Request and track nutritious meals from local partners.',
+          strings.beneficiaryDashboardSubtitle,
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         const SizedBox(height: 20),
@@ -40,7 +42,7 @@ class BeneficiaryDashboardScreen extends StatelessWidget {
           childAspectRatio: 1.1,
           children: [
             StatCard(
-              label: 'Open Requests',
+              label: strings.openRequests,
               value: requestProvider.requests
                   .where((request) => request.status != RequestStatus.completed)
                   .length
@@ -49,7 +51,7 @@ class BeneficiaryDashboardScreen extends StatelessWidget {
               color: AppColors.accent,
             ),
             StatCard(
-              label: 'Meals Delivered',
+              label: strings.mealsDelivered,
               value: requestProvider.completedRequests.toString(),
               icon: Icons.emoji_food_beverage,
               color: AppColors.success,
@@ -57,9 +59,39 @@ class BeneficiaryDashboardScreen extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 24),
+        Wrap(
+          spacing: 12,
+          runSpacing: 12,
+          children: [
+            SizedBox(
+              width: 200,
+              child: CustomButton(
+                text: strings.beneficiaryFeed,
+                onPressed: () => Navigator.of(context).pushNamed('/beneficiary/feed'),
+              ),
+            ),
+            SizedBox(
+              width: 200,
+              child: CustomButton(
+                text: strings.requestTracking,
+                isOutlined: true,
+                onPressed: () => Navigator.of(context).pushNamed('/beneficiary/requests'),
+              ),
+            ),
+            SizedBox(
+              width: 200,
+              child: CustomButton(
+                text: strings.beneficiaryProfile,
+                isOutlined: true,
+                onPressed: () => Navigator.of(context).pushNamed('/beneficiary/profile'),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 24),
         SectionHeader(
-          title: 'Available Today',
-          actionText: 'Refresh',
+          title: strings.availableToday,
+          actionText: strings.refresh,
           onAction: () => context.read<FoodProvider>().fetchListings(),
         ),
         const SizedBox(height: 12),
@@ -78,10 +110,13 @@ class BeneficiaryDashboardScreen extends StatelessWidget {
                 children: [
                   const Icon(Icons.waving_hand, size: 48),
                   const SizedBox(height: 12),
-                  Text('No nearby food right now',
+                  Text(strings.noNearbyFood,
                       style: Theme.of(context).textTheme.titleMedium),
                   const SizedBox(height: 8),
-                  const Text('Check back soon or expand your search radius.'),
+                  Text(
+                    strings.expandSearchMessage,
+                    textAlign: TextAlign.center,
+                  ),
                 ],
               ),
             ),
@@ -101,7 +136,7 @@ class BeneficiaryDashboardScreen extends StatelessWidget {
                         };
                         context.read<RequestProvider>().createRequest(requestData);
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Request sent!')),
+                          SnackBar(content: Text(strings.requestSent)),
                         );
                       },
                     ),
@@ -109,21 +144,21 @@ class BeneficiaryDashboardScreen extends StatelessWidget {
                 ),
               ),
         const SizedBox(height: 24),
-        SectionHeader(title: 'My Requests'),
+        SectionHeader(title: strings.myRequests),
         const SizedBox(height: 12),
         if (requestProvider.isLoading)
           const Center(child: CircularProgressIndicator())
         else if (requestProvider.requests.isEmpty)
-          const Text('No requests yet. Your history will appear here.')
+          Text(strings.noRequestsYet)
         else
           ...requestProvider.requests.take(3).map(
                 (request) => Card(
                   child: ListTile(
                     leading: const Icon(Icons.fastfood),
                     title: Text(request.foodTitle),
-                    subtitle: Text(request.status.name.toUpperCase()),
+                    subtitle: Text(_statusLabel(request.status, strings)),
                     trailing: Text(
-                      '${request.requestedServings} servings',
+                      '${request.requestedServings} ${strings.servings}',
                       style: Theme.of(context).textTheme.labelLarge,
                     ),
                   ),
@@ -131,11 +166,28 @@ class BeneficiaryDashboardScreen extends StatelessWidget {
               ),
         const SizedBox(height: 60),
         CustomButton(
-          text: 'View Request History',
+          text: strings.viewRequestHistory,
           isOutlined: true,
-          onPressed: () {},
+          onPressed: () => Navigator.of(context).pushNamed('/beneficiary/requests'),
         ),
       ],
     );
+  }
+
+  String _statusLabel(RequestStatus status, AppLocalizations strings) {
+    switch (status) {
+      case RequestStatus.pending:
+        return strings.pending;
+      case RequestStatus.approved:
+        return strings.approved;
+      case RequestStatus.rejected:
+        return strings.rejected;
+      case RequestStatus.inProgress:
+        return strings.inProgress;
+      case RequestStatus.completed:
+        return strings.completed;
+      case RequestStatus.cancelled:
+        return strings.cancelled;
+    }
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../l10n/app_localizations.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/food_provider.dart';
 import '../../widgets/custom_button.dart';
@@ -17,6 +18,7 @@ class ProviderDashboardScreen extends StatelessWidget {
     final foodProvider = context.watch<FoodProvider>();
     final authProvider = context.watch<AuthProvider>();
     final myListings = foodProvider.myListings;
+    final strings = AppLocalizations.of(context)!;
 
     return RefreshIndicator(
       onRefresh: () async {
@@ -29,12 +31,12 @@ class ProviderDashboardScreen extends StatelessWidget {
         padding: const EdgeInsets.all(24),
         children: [
           Text(
-            'Provider Dashboard',
+            strings.providerDashboardTitle,
             style: Theme.of(context).textTheme.displaySmall,
           ),
           const SizedBox(height: 8),
           Text(
-            'Track your surplus food and impact metrics.',
+            strings.providerDashboardSubtitle,
             style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(height: 24),
@@ -47,13 +49,13 @@ class ProviderDashboardScreen extends StatelessWidget {
             childAspectRatio: 1.1,
             children: [
               StatCard(
-                label: 'Active Listings',
+                label: strings.activeListings,
                 value: myListings.length.toString(),
                 icon: Icons.inventory_2,
                 color: AppColors.primary,
               ),
               StatCard(
-                label: 'Meals Available',
+                label: strings.mealsAvailable,
                 value: myListings.fold<int>(0, (sum, listing) => sum + listing.servings).toString(),
                 icon: Icons.restaurant,
                 color: AppColors.secondary,
@@ -62,15 +64,27 @@ class ProviderDashboardScreen extends StatelessWidget {
           ),
           const SizedBox(height: 24),
           CustomButton(
-            text: 'Add New Listing',
+            text: strings.addListing,
             icon: Icons.add_circle,
-            onPressed: () {},
+            onPressed: () => Navigator.of(context).pushNamed('/provider/add-listing'),
+          ),
+          const SizedBox(height: 12),
+          CustomButton(
+            text: strings.manageListings,
+            isOutlined: true,
+            onPressed: () => Navigator.of(context).pushNamed('/provider/manage-listings'),
+          ),
+          const SizedBox(height: 12),
+          CustomButton(
+            text: strings.providerProfile,
+            isOutlined: true,
+            onPressed: () => Navigator.of(context).pushNamed('/provider/profile'),
           ),
           const SizedBox(height: 24),
           SectionHeader(
-            title: 'Your Latest Listings',
-            actionText: 'View All',
-            onAction: () {},
+            title: strings.recentListings,
+            actionText: strings.viewAll,
+            onAction: () => Navigator.of(context).pushNamed('/provider/manage-listings'),
           ),
           const SizedBox(height: 12),
           if (foodProvider.isLoading)
@@ -86,10 +100,10 @@ class ProviderDashboardScreen extends StatelessWidget {
                   children: [
                     const Icon(Icons.sentiment_satisfied, size: 48),
                     const SizedBox(height: 12),
-                    Text('No listings yet', style: Theme.of(context).textTheme.titleMedium),
+                    Text(strings.noListings, style: Theme.of(context).textTheme.titleMedium),
                     const SizedBox(height: 8),
                     Text(
-                      'Start sharing surplus food to make an impact.',
+                      strings.shareFoodCta,
                       textAlign: TextAlign.center,
                     ),
                   ],

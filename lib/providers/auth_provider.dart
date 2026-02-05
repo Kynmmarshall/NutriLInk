@@ -99,6 +99,48 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
+  Future<bool> loginAsGuest(UserRole role) async {
+    try {
+      _isLoading = true;
+      _error = null;
+      notifyListeners();
+
+      await Future.delayed(const Duration(milliseconds: 400));
+
+      _currentUser = User(
+        id: 'guest-${role.name}',
+        fullName: '${_roleDisplayName(role)} Guest',
+        email: '${role.name}@guest.nutrilink',
+        phoneNumber: '0000000000',
+        address: 'Guest Mode',
+        role: role,
+        createdAt: DateTime.now(),
+      );
+
+      _isLoading = false;
+      notifyListeners();
+      return true;
+    } catch (_) {
+      _error = 'Failed to start guest session';
+      _isLoading = false;
+      notifyListeners();
+      return false;
+    }
+  }
+
+  String _roleDisplayName(UserRole role) {
+    switch (role) {
+      case UserRole.provider:
+        return 'Provider';
+      case UserRole.beneficiary:
+        return 'Beneficiary';
+      case UserRole.deliveryAgent:
+        return 'Delivery Agent';
+      case UserRole.admin:
+        return 'Admin';
+    }
+  }
+
   Future<void> logout() async {
     await _authService.logout();
     _currentUser = null;

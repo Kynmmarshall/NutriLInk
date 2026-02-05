@@ -65,17 +65,25 @@ class FoodListingCard extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Chip(
-                    label: Text('${listing.servings} servings'),
-                    backgroundColor: AppColors.primaryLight.withOpacity(0.2),
+                  Expanded(
+                    child: Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: [
+                        Chip(
+                          label: Text('${listing.servings} servings'),
+                          backgroundColor: AppColors.primaryLight.withValues(alpha: 0.2),
+                        ),
+                        Chip(
+                          label: Text(listing.category.name.toUpperCase()),
+                          backgroundColor: AppColors.secondaryLight.withValues(alpha: 0.2),
+                        ),
+                      ],
+                    ),
                   ),
-                  const SizedBox(width: 8),
-                  Chip(
-                    label: Text(listing.category.name.toUpperCase()),
-                    backgroundColor: AppColors.secondaryLight.withOpacity(0.2),
-                  ),
-                  const Spacer(),
+                  const SizedBox(width: 12),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
@@ -90,7 +98,7 @@ class FoodListingCard extends StatelessWidget {
                           vertical: 4,
                         ),
                         decoration: BoxDecoration(
-                          color: _statusColor(listing.status).withOpacity(0.15),
+                          color: _statusColor(listing.status).withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Text(

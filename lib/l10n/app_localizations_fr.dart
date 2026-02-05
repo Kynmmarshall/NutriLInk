@@ -82,6 +82,101 @@ class AppLocalizationsFr extends AppLocalizations {
   String get adminDescription => 'Gérer la plateforme';
 
   @override
+  String get guestLogin => 'Mode invité';
+
+  @override
+  String get guestLoginDescription => 'Testez chaque rôle sans créer de compte';
+
+  @override
+  String get providerDashboardTitle => 'Tableau fournisseur';
+
+  @override
+  String get providerDashboardSubtitle =>
+      'Suivez vos surplus alimentaires et vos indicateurs d\'impact.';
+
+  @override
+  String get activeListings => 'Annonces actives';
+
+  @override
+  String get manageListings => 'Gérer les annonces';
+
+  @override
+  String get providerProfile => 'Profil fournisseur';
+
+  @override
+  String get recentListings => 'Vos dernières annonces';
+
+  @override
+  String get viewAll => 'Voir tout';
+
+  @override
+  String get noListings => 'Aucune annonce pour le moment';
+
+  @override
+  String get shareFoodCta =>
+      'Commencez à partager vos surplus pour créer de l\'impact.';
+
+  @override
+  String get findMealsNearby => 'Trouvez des repas à proximité';
+
+  @override
+  String get beneficiaryDashboardSubtitle =>
+      'Demandez et suivez des repas nutritifs auprès des partenaires locaux.';
+
+  @override
+  String get openRequests => 'Demandes en cours';
+
+  @override
+  String get beneficiaryFeed => 'Flux alimentaire';
+
+  @override
+  String get requestTracking => 'Suivi des demandes';
+
+  @override
+  String get beneficiaryProfile => 'Profil bénéficiaire';
+
+  @override
+  String get viewRequestHistory => 'Voir l\'historique des demandes';
+
+  @override
+  String get noRequestsYet =>
+      'Aucune demande pour l\'instant. Votre historique apparaîtra ici.';
+
+  @override
+  String get expandSearchMessage =>
+      'Revenez bientôt ou élargissez votre rayon de recherche.';
+
+  @override
+  String get noNearbyFood => 'Aucune nourriture à proximité pour le moment.';
+
+  @override
+  String get allCategories => 'Toutes';
+
+  @override
+  String get requestServings => 'Portions demandées';
+
+  @override
+  String get requestNotes => 'Notes supplémentaires';
+
+  @override
+  String get submitRequest => 'Soumettre la demande';
+
+  @override
+  String get requestCreated => 'Demande créée avec succès';
+
+  @override
+  String get requestCancelled => 'Demande annulée';
+
+  @override
+  String get cancelRequest => 'Annuler la demande';
+
+  @override
+  String get confirmCancelRequest => 'Annuler cette demande ?';
+
+  @override
+  String get selectDateTime => 'Sélectionnez la date et l\'heure';
+
+  @override
   String get dashboard => 'Tableau de bord';
 
   @override
@@ -124,6 +219,36 @@ class AppLocalizationsFr extends AppLocalizations {
   String get foodType => 'Type d\'aliment';
 
   @override
+  String get searchListings => 'Rechercher des annonces...';
+
+  @override
+  String get filterByStatus => 'Filtrer par statut';
+
+  @override
+  String get allStatuses => 'Tous les statuts';
+
+  @override
+  String get available => 'Disponible';
+
+  @override
+  String get reserved => 'Réservé';
+
+  @override
+  String get expired => 'Expiré';
+
+  @override
+  String get updateListing => 'Mettre à jour l\'annonce';
+
+  @override
+  String get editListing => 'Modifier l\'annonce';
+
+  @override
+  String get deleteListingConfirm => 'Supprimer l\'annonce ?';
+
+  @override
+  String get deleteListingMessage => 'Cette action est irréversible.';
+
+  @override
   String get availableFood => 'Nourriture disponible';
 
   @override
@@ -140,6 +265,12 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get trackRequest => 'Suivre la demande';
+
+  @override
+  String get availableToday => 'Disponible aujourd\'hui';
+
+  @override
+  String get refresh => 'Actualiser';
 
   @override
   String get availableTasks => 'Tâches disponibles';
@@ -166,6 +297,74 @@ class AppLocalizationsFr extends AppLocalizations {
   String get completeDelivery => 'Terminer la livraison';
 
   @override
+  String get deliveryCenter => 'Centre de livraison';
+
+  @override
+  String get deliveryDashboardSubtitle =>
+      'Acceptez des tâches, voyez les itinéraires et mettez à jour les statuts de livraison.';
+
+  @override
+  String get availableTasksDescription =>
+      'Réclamez une tâche disponible pour commencer à livrer.';
+
+  @override
+  String get noDeliveryTasks => 'Aucune tâche de livraison pour le moment.';
+
+  @override
+  String get assignToMe => 'M\'assigner';
+
+  @override
+  String get taskAccepted => 'Tâche acceptée';
+
+  @override
+  String get startPickup => 'Commencer le ramassage';
+
+  @override
+  String get markPickedUp => 'Ramassage effectué';
+
+  @override
+  String get startDriving => 'Commencer le trajet';
+
+  @override
+  String get markDelivered => 'Marquer comme livré';
+
+  @override
+  String get statusUpdated => 'Statut mis à jour';
+
+  @override
+  String get pickupInProgress => 'Ramassage en cours';
+
+  @override
+  String get pickedUp => 'Ramassé';
+
+  @override
+  String get deliveryInProgress => 'Livraison en cours';
+
+  @override
+  String get deliveryDetails => 'Détails de la livraison';
+
+  @override
+  String get status => 'Statut';
+
+  @override
+  String get viewRoute => 'Voir l\'itinéraire';
+
+  @override
+  String get contactProvider => 'Contacter le fournisseur';
+
+  @override
+  String get contactBeneficiary => 'Contacter le bénéficiaire';
+
+  @override
+  String get call => 'Appeler';
+
+  @override
+  String get message => 'Message';
+
+  @override
+  String get notes => 'Notes';
+
+  @override
   String get userManagement => 'Gestion des utilisateurs';
 
   @override
@@ -187,7 +386,25 @@ class AppLocalizationsFr extends AppLocalizations {
   String get mealsDelivered => 'Repas livrés';
 
   @override
+  String get mealsAvailable => 'Repas disponibles';
+
+  @override
   String get foodWasteReduced => 'Gaspillage alimentaire réduit';
+
+  @override
+  String get contactInformation => 'Coordonnées';
+
+  @override
+  String get editProfile => 'Modifier le profil';
+
+  @override
+  String get profileUpdated => 'Profil mis à jour avec succès';
+
+  @override
+  String get radiusPreference => 'Rayon de recherche préféré';
+
+  @override
+  String get savedPreferences => 'Préférences enregistrées';
 
   @override
   String get pending => 'En attente';

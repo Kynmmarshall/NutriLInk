@@ -89,7 +89,7 @@ class AdminDashboardScreen extends StatelessWidget {
                 (request) => Card(
                   child: ListTile(
                     leading: CircleAvatar(
-                      backgroundColor: AppColors.primary.withOpacity(0.15),
+                      backgroundColor: AppColors.primary.withValues(alpha: 0.15),
                       child: Icon(
                         Icons.person,
                         color: AppColors.primary,

@@ -82,6 +82,100 @@ class AppLocalizationsEn extends AppLocalizations {
   String get adminDescription => 'Manage platform';
 
   @override
+  String get guestLogin => 'Guest mode';
+
+  @override
+  String get guestLoginDescription =>
+      'Test each role without creating an account';
+
+  @override
+  String get providerDashboardTitle => 'Provider Dashboard';
+
+  @override
+  String get providerDashboardSubtitle =>
+      'Track your surplus food and impact metrics.';
+
+  @override
+  String get activeListings => 'Active Listings';
+
+  @override
+  String get manageListings => 'Manage Listings';
+
+  @override
+  String get providerProfile => 'Provider Profile';
+
+  @override
+  String get recentListings => 'Your Latest Listings';
+
+  @override
+  String get viewAll => 'View All';
+
+  @override
+  String get noListings => 'No listings yet';
+
+  @override
+  String get shareFoodCta => 'Start sharing surplus food to make an impact.';
+
+  @override
+  String get findMealsNearby => 'Find Meals Nearby';
+
+  @override
+  String get beneficiaryDashboardSubtitle =>
+      'Request and track nutritious meals from local partners.';
+
+  @override
+  String get openRequests => 'Open Requests';
+
+  @override
+  String get beneficiaryFeed => 'Food Feed';
+
+  @override
+  String get requestTracking => 'Request Tracking';
+
+  @override
+  String get beneficiaryProfile => 'Beneficiary Profile';
+
+  @override
+  String get viewRequestHistory => 'View Request History';
+
+  @override
+  String get noRequestsYet => 'No requests yet. Your history will appear here.';
+
+  @override
+  String get expandSearchMessage =>
+      'Check back soon or expand your search radius.';
+
+  @override
+  String get noNearbyFood => 'No nearby food available right now.';
+
+  @override
+  String get allCategories => 'All';
+
+  @override
+  String get requestServings => 'Requested servings';
+
+  @override
+  String get requestNotes => 'Additional notes';
+
+  @override
+  String get submitRequest => 'Submit Request';
+
+  @override
+  String get requestCreated => 'Request created successfully';
+
+  @override
+  String get requestCancelled => 'Request cancelled';
+
+  @override
+  String get cancelRequest => 'Cancel Request';
+
+  @override
+  String get confirmCancelRequest => 'Cancel this request?';
+
+  @override
+  String get selectDateTime => 'Select date & time';
+
+  @override
   String get dashboard => 'Dashboard';
 
   @override
@@ -124,6 +218,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String get foodType => 'Food Type';
 
   @override
+  String get searchListings => 'Search listings...';
+
+  @override
+  String get filterByStatus => 'Filter by status';
+
+  @override
+  String get allStatuses => 'All statuses';
+
+  @override
+  String get available => 'Available';
+
+  @override
+  String get reserved => 'Reserved';
+
+  @override
+  String get expired => 'Expired';
+
+  @override
+  String get updateListing => 'Update Listing';
+
+  @override
+  String get editListing => 'Edit Listing';
+
+  @override
+  String get deleteListingConfirm => 'Delete listing?';
+
+  @override
+  String get deleteListingMessage => 'This action cannot be undone.';
+
+  @override
   String get availableFood => 'Available Food';
 
   @override
@@ -140,6 +264,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get trackRequest => 'Track Request';
+
+  @override
+  String get availableToday => 'Available Today';
+
+  @override
+  String get refresh => 'Refresh';
 
   @override
   String get availableTasks => 'Available Tasks';
@@ -166,6 +296,74 @@ class AppLocalizationsEn extends AppLocalizations {
   String get completeDelivery => 'Complete Delivery';
 
   @override
+  String get deliveryCenter => 'Delivery Center';
+
+  @override
+  String get deliveryDashboardSubtitle =>
+      'Accept tasks, view routes, and update delivery statuses.';
+
+  @override
+  String get availableTasksDescription =>
+      'Claim an available task to start delivering.';
+
+  @override
+  String get noDeliveryTasks => 'No delivery tasks at the moment.';
+
+  @override
+  String get assignToMe => 'Assign to me';
+
+  @override
+  String get taskAccepted => 'Task accepted';
+
+  @override
+  String get startPickup => 'Start Pickup';
+
+  @override
+  String get markPickedUp => 'Pickup Done';
+
+  @override
+  String get startDriving => 'Start Delivery';
+
+  @override
+  String get markDelivered => 'Mark Delivered';
+
+  @override
+  String get statusUpdated => 'Status updated';
+
+  @override
+  String get pickupInProgress => 'Pickup in progress';
+
+  @override
+  String get pickedUp => 'Picked up';
+
+  @override
+  String get deliveryInProgress => 'Delivery in progress';
+
+  @override
+  String get deliveryDetails => 'Delivery Details';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get viewRoute => 'View Route';
+
+  @override
+  String get contactProvider => 'Contact Provider';
+
+  @override
+  String get contactBeneficiary => 'Contact Beneficiary';
+
+  @override
+  String get call => 'Call';
+
+  @override
+  String get message => 'Message';
+
+  @override
+  String get notes => 'Notes';
+
+  @override
   String get userManagement => 'User Management';
 
   @override
@@ -187,7 +385,25 @@ class AppLocalizationsEn extends AppLocalizations {
   String get mealsDelivered => 'Meals Delivered';
 
   @override
+  String get mealsAvailable => 'Meals Available';
+
+  @override
   String get foodWasteReduced => 'Food Waste Reduced';
+
+  @override
+  String get contactInformation => 'Contact Information';
+
+  @override
+  String get editProfile => 'Edit Profile';
+
+  @override
+  String get profileUpdated => 'Profile updated successfully';
+
+  @override
+  String get radiusPreference => 'Preferred search radius';
+
+  @override
+  String get savedPreferences => 'Preferences saved';
 
   @override
   String get pending => 'Pending';

@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 
 import '../../models/user_model.dart';
 import '../../providers/auth_provider.dart';
+import '../../providers/locale_provider.dart';
+import '../../providers/theme_provider.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_text_field.dart';
 import '../../widgets/role_card.dart';
@@ -66,8 +68,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
     final strings = AppLocalizations.of(context)!;
     final authProvider = context.watch<AuthProvider>();
 
+    final themeMode = context.watch<ThemeProvider>().themeMode;
+
     return Scaffold(
-      appBar: AppBar(title: Text(strings.register)),
+      appBar: AppBar(
+        title: Text(strings.register),
+        actions: [
+          IconButton(
+            tooltip: strings.theme,
+            icon: Icon(_themeIcon(themeMode)),
+            onPressed: () => context.read<ThemeProvider>().toggleTheme(),
+          ),
+          IconButton(
+            tooltip: strings.language,
+            icon: const Icon(Icons.language),
+            onPressed: () => context.read<LocaleProvider>().toggleLocale(),
+          ),
+        ],
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24),
@@ -81,43 +99,50 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 const SizedBox(height: 16),
-                GridView.count(
-                  crossAxisCount: 2,
-                  childAspectRatio: 0.85,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  mainAxisSpacing: 16,
-                  crossAxisSpacing: 16,
-                  children: [
-                    _buildRoleCard(
-                      icon: Icons.storefront,
-                      title: strings.foodProvider,
-                      description: strings.providerDescription,
-                      role: UserRole.provider,
-                      color: Colors.blue,
-                    ),
-                    _buildRoleCard(
-                      icon: Icons.favorite,
-                      title: strings.beneficiary,
-                      description: strings.beneficiaryDescription,
-                      role: UserRole.beneficiary,
-                      color: Colors.green,
-                    ),
-                    _buildRoleCard(
-                      icon: Icons.delivery_dining,
-                      title: strings.deliveryAgent,
-                      description: strings.deliveryDescription,
-                      role: UserRole.deliveryAgent,
-                      color: Colors.orange,
-                    ),
-                    _buildRoleCard(
-                      icon: Icons.admin_panel_settings,
-                      title: strings.admin,
-                      description: strings.adminDescription,
-                      role: UserRole.admin,
-                      color: Colors.purple,
-                    ),
-                  ],
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    final bool useTwoColumns = constraints.maxWidth >= 500;
+                    final double aspectRatio = useTwoColumns ? 0.9 : 1.8;
+
+                    return GridView.count(
+                      crossAxisCount: useTwoColumns ? 2 : 1,
+                      childAspectRatio: aspectRatio,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      mainAxisSpacing: 16,
+                      crossAxisSpacing: 16,
+                      children: [
+                        _buildRoleCard(
+                          icon: Icons.storefront,
+                          title: strings.foodProvider,
+                          description: strings.providerDescription,
+                          role: UserRole.provider,
+                          color: Colors.blue,
+                        ),
+                        _buildRoleCard(
+                          icon: Icons.favorite,
+                          title: strings.beneficiary,
+                          description: strings.beneficiaryDescription,
+                          role: UserRole.beneficiary,
+                          color: Colors.green,
+                        ),
+                        _buildRoleCard(
+                          icon: Icons.delivery_dining,
+                          title: strings.deliveryAgent,
+                          description: strings.deliveryDescription,
+                          role: UserRole.deliveryAgent,
+                          color: Colors.orange,
+                        ),
+                        _buildRoleCard(
+                          icon: Icons.admin_panel_settings,
+                          title: strings.admin,
+                          description: strings.adminDescription,
+                          role: UserRole.admin,
+                          color: Colors.purple,
+                        ),
+                      ],
+                    );
+                  },
                 ),
                 const SizedBox(height: 24),
                 CustomTextField(
@@ -213,5 +238,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
       isSelected: _selectedRole == role,
       onTap: () => setState(() => _selectedRole = role),
     );
+  }
+
+  IconData _themeIcon(ThemeMode mode) {
+    switch (mode) {
+      case ThemeMode.light:
+        return Icons.light_mode;
+      case ThemeMode.dark:
+        return Icons.dark_mode;
+      default:
+        return Icons.brightness_4;
+    }
   }
 }

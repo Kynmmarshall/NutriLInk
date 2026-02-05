@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final bool isLoading;
   final bool isOutlined;
   final Color? color;
@@ -26,6 +26,7 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final effectiveOnPressed = onPressed;
     final buttonChild = isLoading
         ? SizedBox(
             height: 20,
@@ -47,7 +48,13 @@ class CustomButton extends StatelessWidget {
                 Icon(icon, size: 20),
                 const SizedBox(width: 8),
               ],
-              Text(text),
+              Flexible(
+                child: Text(
+                  text,
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: false,
+                ),
+              ),
             ],
           );
 
@@ -56,7 +63,7 @@ class CustomButton extends StatelessWidget {
       height: height ?? 48,
       child: isOutlined
           ? OutlinedButton(
-              onPressed: isLoading ? null : onPressed,
+            onPressed: (isLoading || effectiveOnPressed == null) ? null : effectiveOnPressed,
               style: color != null
                   ? OutlinedButton.styleFrom(
                       foregroundColor: color,
@@ -66,7 +73,7 @@ class CustomButton extends StatelessWidget {
               child: buttonChild,
             )
           : ElevatedButton(
-              onPressed: isLoading ? null : onPressed,
+              onPressed: (isLoading || effectiveOnPressed == null) ? null : effectiveOnPressed,
               style: (color != null || textColor != null)
                   ? ElevatedButton.styleFrom(
                       backgroundColor: color,

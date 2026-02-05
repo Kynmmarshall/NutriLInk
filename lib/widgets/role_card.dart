@@ -27,7 +27,7 @@ class RoleCard extends StatelessWidget {
         curve: Curves.easeInOut,
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: isSelected ? color.withOpacity(0.1) : Theme.of(context).cardColor,
+          color: isSelected ? color.withValues(alpha: 0.1) : Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: isSelected ? color : Colors.transparent,
@@ -35,7 +35,7 @@ class RoleCard extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withValues(alpha: 0.05),
               blurRadius: 8,
               offset: const Offset(0, 4),
             ),
@@ -49,7 +49,7 @@ class RoleCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: color.withOpacity(0.2),
+                    color: color.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Icon(icon, color: color, size: 28),

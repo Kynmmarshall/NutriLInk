@@ -242,6 +242,186 @@ abstract class AppLocalizations {
   /// **'Manage platform'**
   String get adminDescription;
 
+  /// No description provided for @guestLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Guest mode'**
+  String get guestLogin;
+
+  /// No description provided for @guestLoginDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Test each role without creating an account'**
+  String get guestLoginDescription;
+
+  /// No description provided for @providerDashboardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Provider Dashboard'**
+  String get providerDashboardTitle;
+
+  /// No description provided for @providerDashboardSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Track your surplus food and impact metrics.'**
+  String get providerDashboardSubtitle;
+
+  /// No description provided for @activeListings.
+  ///
+  /// In en, this message translates to:
+  /// **'Active Listings'**
+  String get activeListings;
+
+  /// No description provided for @manageListings.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage Listings'**
+  String get manageListings;
+
+  /// No description provided for @providerProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Provider Profile'**
+  String get providerProfile;
+
+  /// No description provided for @recentListings.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Latest Listings'**
+  String get recentListings;
+
+  /// No description provided for @viewAll.
+  ///
+  /// In en, this message translates to:
+  /// **'View All'**
+  String get viewAll;
+
+  /// No description provided for @noListings.
+  ///
+  /// In en, this message translates to:
+  /// **'No listings yet'**
+  String get noListings;
+
+  /// No description provided for @shareFoodCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Start sharing surplus food to make an impact.'**
+  String get shareFoodCta;
+
+  /// No description provided for @findMealsNearby.
+  ///
+  /// In en, this message translates to:
+  /// **'Find Meals Nearby'**
+  String get findMealsNearby;
+
+  /// No description provided for @beneficiaryDashboardSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Request and track nutritious meals from local partners.'**
+  String get beneficiaryDashboardSubtitle;
+
+  /// No description provided for @openRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Requests'**
+  String get openRequests;
+
+  /// No description provided for @beneficiaryFeed.
+  ///
+  /// In en, this message translates to:
+  /// **'Food Feed'**
+  String get beneficiaryFeed;
+
+  /// No description provided for @requestTracking.
+  ///
+  /// In en, this message translates to:
+  /// **'Request Tracking'**
+  String get requestTracking;
+
+  /// No description provided for @beneficiaryProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Beneficiary Profile'**
+  String get beneficiaryProfile;
+
+  /// No description provided for @viewRequestHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'View Request History'**
+  String get viewRequestHistory;
+
+  /// No description provided for @noRequestsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No requests yet. Your history will appear here.'**
+  String get noRequestsYet;
+
+  /// No description provided for @expandSearchMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Check back soon or expand your search radius.'**
+  String get expandSearchMessage;
+
+  /// No description provided for @noNearbyFood.
+  ///
+  /// In en, this message translates to:
+  /// **'No nearby food available right now.'**
+  String get noNearbyFood;
+
+  /// No description provided for @allCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get allCategories;
+
+  /// No description provided for @requestServings.
+  ///
+  /// In en, this message translates to:
+  /// **'Requested servings'**
+  String get requestServings;
+
+  /// No description provided for @requestNotes.
+  ///
+  /// In en, this message translates to:
+  /// **'Additional notes'**
+  String get requestNotes;
+
+  /// No description provided for @submitRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit Request'**
+  String get submitRequest;
+
+  /// No description provided for @requestCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Request created successfully'**
+  String get requestCreated;
+
+  /// No description provided for @requestCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Request cancelled'**
+  String get requestCancelled;
+
+  /// No description provided for @cancelRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel Request'**
+  String get cancelRequest;
+
+  /// No description provided for @confirmCancelRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel this request?'**
+  String get confirmCancelRequest;
+
+  /// No description provided for @selectDateTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Select date & time'**
+  String get selectDateTime;
+
   /// No description provided for @dashboard.
   ///
   /// In en, this message translates to:
@@ -326,6 +506,66 @@ abstract class AppLocalizations {
   /// **'Food Type'**
   String get foodType;
 
+  /// No description provided for @searchListings.
+  ///
+  /// In en, this message translates to:
+  /// **'Search listings...'**
+  String get searchListings;
+
+  /// No description provided for @filterByStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter by status'**
+  String get filterByStatus;
+
+  /// No description provided for @allStatuses.
+  ///
+  /// In en, this message translates to:
+  /// **'All statuses'**
+  String get allStatuses;
+
+  /// No description provided for @available.
+  ///
+  /// In en, this message translates to:
+  /// **'Available'**
+  String get available;
+
+  /// No description provided for @reserved.
+  ///
+  /// In en, this message translates to:
+  /// **'Reserved'**
+  String get reserved;
+
+  /// No description provided for @expired.
+  ///
+  /// In en, this message translates to:
+  /// **'Expired'**
+  String get expired;
+
+  /// No description provided for @updateListing.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Listing'**
+  String get updateListing;
+
+  /// No description provided for @editListing.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Listing'**
+  String get editListing;
+
+  /// No description provided for @deleteListingConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete listing?'**
+  String get deleteListingConfirm;
+
+  /// No description provided for @deleteListingMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This action cannot be undone.'**
+  String get deleteListingMessage;
+
   /// No description provided for @availableFood.
   ///
   /// In en, this message translates to:
@@ -361,6 +601,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Track Request'**
   String get trackRequest;
+
+  /// No description provided for @availableToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Available Today'**
+  String get availableToday;
+
+  /// No description provided for @refresh.
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh'**
+  String get refresh;
 
   /// No description provided for @availableTasks.
   ///
@@ -410,6 +662,138 @@ abstract class AppLocalizations {
   /// **'Complete Delivery'**
   String get completeDelivery;
 
+  /// No description provided for @deliveryCenter.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery Center'**
+  String get deliveryCenter;
+
+  /// No description provided for @deliveryDashboardSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept tasks, view routes, and update delivery statuses.'**
+  String get deliveryDashboardSubtitle;
+
+  /// No description provided for @availableTasksDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Claim an available task to start delivering.'**
+  String get availableTasksDescription;
+
+  /// No description provided for @noDeliveryTasks.
+  ///
+  /// In en, this message translates to:
+  /// **'No delivery tasks at the moment.'**
+  String get noDeliveryTasks;
+
+  /// No description provided for @assignToMe.
+  ///
+  /// In en, this message translates to:
+  /// **'Assign to me'**
+  String get assignToMe;
+
+  /// No description provided for @taskAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Task accepted'**
+  String get taskAccepted;
+
+  /// No description provided for @startPickup.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Pickup'**
+  String get startPickup;
+
+  /// No description provided for @markPickedUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Pickup Done'**
+  String get markPickedUp;
+
+  /// No description provided for @startDriving.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Delivery'**
+  String get startDriving;
+
+  /// No description provided for @markDelivered.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark Delivered'**
+  String get markDelivered;
+
+  /// No description provided for @statusUpdated.
+  ///
+  /// In en, this message translates to:
+  /// **'Status updated'**
+  String get statusUpdated;
+
+  /// No description provided for @pickupInProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Pickup in progress'**
+  String get pickupInProgress;
+
+  /// No description provided for @pickedUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Picked up'**
+  String get pickedUp;
+
+  /// No description provided for @deliveryInProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery in progress'**
+  String get deliveryInProgress;
+
+  /// No description provided for @deliveryDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery Details'**
+  String get deliveryDetails;
+
+  /// No description provided for @status.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get status;
+
+  /// No description provided for @viewRoute.
+  ///
+  /// In en, this message translates to:
+  /// **'View Route'**
+  String get viewRoute;
+
+  /// No description provided for @contactProvider.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Provider'**
+  String get contactProvider;
+
+  /// No description provided for @contactBeneficiary.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Beneficiary'**
+  String get contactBeneficiary;
+
+  /// No description provided for @call.
+  ///
+  /// In en, this message translates to:
+  /// **'Call'**
+  String get call;
+
+  /// No description provided for @message.
+  ///
+  /// In en, this message translates to:
+  /// **'Message'**
+  String get message;
+
+  /// No description provided for @notes.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes'**
+  String get notes;
+
   /// No description provided for @userManagement.
   ///
   /// In en, this message translates to:
@@ -452,11 +836,47 @@ abstract class AppLocalizations {
   /// **'Meals Delivered'**
   String get mealsDelivered;
 
+  /// No description provided for @mealsAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Meals Available'**
+  String get mealsAvailable;
+
   /// No description provided for @foodWasteReduced.
   ///
   /// In en, this message translates to:
   /// **'Food Waste Reduced'**
   String get foodWasteReduced;
+
+  /// No description provided for @contactInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Information'**
+  String get contactInformation;
+
+  /// No description provided for @editProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Profile'**
+  String get editProfile;
+
+  /// No description provided for @profileUpdated.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile updated successfully'**
+  String get profileUpdated;
+
+  /// No description provided for @radiusPreference.
+  ///
+  /// In en, this message translates to:
+  /// **'Preferred search radius'**
+  String get radiusPreference;
+
+  /// No description provided for @savedPreferences.
+  ///
+  /// In en, this message translates to:
+  /// **'Preferences saved'**
+  String get savedPreferences;
 
   /// No description provided for @pending.
   ///

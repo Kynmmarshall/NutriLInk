@@ -178,7 +178,7 @@ class AppTheme {
     ),
     
     chipTheme: ChipThemeData(
-      backgroundColor: AppColors.primaryLight.withOpacity(0.2),
+      backgroundColor: AppColors.primaryLight.withValues(alpha: 0.2),
       deleteIconColor: AppColors.primary,
       labelStyle: GoogleFonts.inter(
         color: AppColors.primary,
@@ -372,7 +372,7 @@ class AppTheme {
     ),
     
     chipTheme: ChipThemeData(
-      backgroundColor: AppColors.primaryLight.withOpacity(0.2),
+      backgroundColor: AppColors.primaryLight.withValues(alpha: 0.2),
       deleteIconColor: AppColors.primary,
       labelStyle: GoogleFonts.inter(
         color: AppColors.primary,
