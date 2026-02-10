@@ -101,13 +101,15 @@ class AuthProvider with ChangeNotifier {
   }
 
   Future<bool> loginAsGuest(UserRole role) async {
-    if (role == UserRole.provider) {
-      return login(
-        email: AppConstants.guestProviderEmail,
-        password: AppConstants.guestProviderPassword,
-      );
+    final credentials = _guestCredentials(role);
+    if (credentials != null) {
+      return login(email: credentials.key, password: credentials.value);
     }
 
+    return _startLocalGuestSession(role);
+  }
+
+  Future<bool> _startLocalGuestSession(UserRole role) async {
     try {
       _isLoading = true;
       _error = null;
@@ -133,6 +135,31 @@ class AuthProvider with ChangeNotifier {
       _isLoading = false;
       notifyListeners();
       return false;
+    }
+  }
+
+  MapEntry<String, String>? _guestCredentials(UserRole role) {
+    switch (role) {
+      case UserRole.provider:
+        return const MapEntry(
+          AppConstants.guestProviderEmail,
+          AppConstants.guestProviderPassword,
+        );
+      case UserRole.beneficiary:
+        return const MapEntry(
+          AppConstants.guestBeneficiaryEmail,
+          AppConstants.guestBeneficiaryPassword,
+        );
+      case UserRole.deliveryAgent:
+        return const MapEntry(
+          AppConstants.guestDeliveryEmail,
+          AppConstants.guestDeliveryPassword,
+        );
+      case UserRole.admin:
+        return const MapEntry(
+          AppConstants.guestAdminEmail,
+          AppConstants.guestAdminPassword,
+        );
     }
   }
 
