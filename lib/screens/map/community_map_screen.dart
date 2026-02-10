@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart' as latlng;
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -16,45 +17,34 @@ class CommunityMapScreen extends StatefulWidget {
 }
 
 class _CommunityMapScreenState extends State<CommunityMapScreen> {
-  GoogleMapController? _mapController;
-  CameraPosition _cameraPosition = const CameraPosition(
-    target: LatLng(20.0, 0.0),
-    zoom: 2.5,
-  );
+  final MapController _mapController = MapController();
+  latlng.LatLng _mapCenter = const latlng.LatLng(20.0, 0.0);
+  double _zoom = 2.5;
   User? _selectedUser;
   bool _isCentering = false;
 
   @override
   void initState() {
     super.initState();
-    final userProvider = context.read<UserProvider>();
-    if (userProvider.users.isEmpty) {
-      userProvider.fetchUsers();
-    }
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      final userProvider = context.read<UserProvider>();
+      if (userProvider.users.isEmpty) {
+        userProvider.fetchUsers();
+      }
       _centerOnUser();
     });
-  }
-
-  @override
-  void dispose() {
-    _mapController?.dispose();
-    super.dispose();
   }
 
   Future<void> _centerOnUser() async {
     setState(() => _isCentering = true);
     try {
       final details = await LocationService.getCurrentLocation();
-      final target = LatLng(details.latitude, details.longitude);
+      final target = latlng.LatLng(details.latitude, details.longitude);
       setState(() {
-        _cameraPosition = CameraPosition(target: target, zoom: 13);
+        _mapCenter = target;
+        _zoom = 13;
       });
-      await _mapController?.animateCamera(
-        CameraUpdate.newCameraPosition(
-          CameraPosition(target: target, zoom: 13),
-        ),
-      );
+      _mapController.move(target, _zoom);
     } catch (_) {
       // Silent failure; UI already shows global map.
     } finally {
@@ -64,27 +54,28 @@ class _CommunityMapScreenState extends State<CommunityMapScreen> {
     }
   }
 
-  Set<Marker> _buildMarkers(
+  List<Marker> _buildMarkers(
     List<User> users,
     AppLocalizations strings,
   ) {
     return users
         .where((user) => user.latitude != null && user.longitude != null)
         .map((user) {
-          final markerId = MarkerId(user.id);
           return Marker(
-            markerId: markerId,
-            position: LatLng(user.latitude!, user.longitude!),
-            icon: BitmapDescriptor.defaultMarkerWithHue(_markerHue(user.role)),
-            infoWindow: InfoWindow(
-              title: user.fullName,
-              snippet: _roleLabel(user.role, strings),
+            point: latlng.LatLng(user.latitude!, user.longitude!),
+            width: 48,
+            height: 48,
+            child: GestureDetector(
               onTap: () => setState(() => _selectedUser = user),
+              child: Icon(
+                Icons.location_on,
+                size: 40,
+                color: _markerColor(user.role),
+              ),
             ),
-            onTap: () => setState(() => _selectedUser = user),
           );
         })
-        .toSet();
+        .toList();
   }
 
   @override
@@ -129,14 +120,21 @@ class _CommunityMapScreenState extends State<CommunityMapScreen> {
 
           return Stack(
             children: [
-              GoogleMap(
-                onMapCreated: (controller) => _mapController = controller,
-                initialCameraPosition: _cameraPosition,
-                markers: markers,
-                myLocationEnabled: true,
-                myLocationButtonEnabled: false,
-                zoomControlsEnabled: false,
-                onTap: (_) => setState(() => _selectedUser = null),
+              FlutterMap(
+                mapController: _mapController,
+                options: MapOptions(
+                  initialCenter: _mapCenter,
+                  initialZoom: _zoom,
+                  onTap: (_, __) => setState(() => _selectedUser = null),
+                ),
+                children: [
+                  TileLayer(
+                    urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    subdomains: const ['a', 'b', 'c'],
+                    userAgentPackageName: 'com.example.nutri_link',
+                  ),
+                  MarkerLayer(markers: markers),
+                ],
               ),
               Positioned(
                 top: 16,
@@ -212,17 +210,17 @@ class _CommunityMapScreenState extends State<CommunityMapScreen> {
     );
   }
 
-  double _markerHue(UserRole role) {
+  Color _markerColor(UserRole role) {
     switch (role) {
       case UserRole.provider:
-        return BitmapDescriptor.hueAzure;
+        return Colors.blue;
       case UserRole.deliveryAgent:
-        return BitmapDescriptor.hueOrange;
+        return Colors.orange;
       case UserRole.admin:
-        return BitmapDescriptor.hueViolet;
+        return Colors.purple;
       case UserRole.beneficiary:
       default:
-        return BitmapDescriptor.hueGreen;
+        return Colors.green;
     }
   }
 

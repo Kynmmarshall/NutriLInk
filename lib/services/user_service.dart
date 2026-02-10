@@ -16,12 +16,17 @@ class UserService {
       return Future<List<User>>.value(_mockUsers);
     }
 
-    final response = await _apiService.get(AppConstants.usersEndpoint);
-    final data = response['users'] ?? response['data'] ?? [];
+    try {
+      final response = await _apiService.get(AppConstants.usersEndpoint);
+      final data = response['users'] ?? response['data'] ?? [];
 
-    return (data as List)
-        .map((json) => User.fromJson(json as Map<String, dynamic>))
-        .toList();
+      return (data as List)
+          .map((json) => User.fromJson(json as Map<String, dynamic>))
+          .toList();
+    } catch (_) {
+      // Fall back to mock users if the API is unreachable so the map remains usable.
+      return _mockUsers;
+    }
   }
 
   List<User> get _mockUsers => [
