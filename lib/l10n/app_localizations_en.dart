@@ -188,6 +188,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notifications => 'Notifications';
 
   @override
+  String get communityMap => 'Community Map';
+
+  @override
+  String get communityMapSubtitle =>
+      'Find nearby providers, beneficiaries, and delivery partners.';
+
+  @override
   String get addListing => 'Add Listing';
 
   @override
@@ -210,6 +217,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get location => 'Location';
+
+  @override
+  String get locationCaptureTitle => 'Share Your Location';
+
+  @override
+  String get locationCaptureSubtitle =>
+      'We use your exact location to display you on the community map.';
+
+  @override
+  String get locationCaptureButton => 'Use my current location';
+
+  @override
+  String get locationCaptureFetching => 'Detecting your location...';
+
+  @override
+  String get locationCaptureSuccess => 'Location captured';
+
+  @override
+  String get locationRequired => 'Please capture your location to continue.';
 
   @override
   String get category => 'Category';

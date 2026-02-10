@@ -446,6 +446,18 @@ abstract class AppLocalizations {
   /// **'Notifications'**
   String get notifications;
 
+  /// No description provided for @communityMap.
+  ///
+  /// In en, this message translates to:
+  /// **'Community Map'**
+  String get communityMap;
+
+  /// No description provided for @communityMapSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find nearby providers, beneficiaries, and delivery partners.'**
+  String get communityMapSubtitle;
+
   /// No description provided for @addListing.
   ///
   /// In en, this message translates to:
@@ -493,6 +505,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Location'**
   String get location;
+
+  /// No description provided for @locationCaptureTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Share Your Location'**
+  String get locationCaptureTitle;
+
+  /// No description provided for @locationCaptureSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'We use your exact location to display you on the community map.'**
+  String get locationCaptureSubtitle;
+
+  /// No description provided for @locationCaptureButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Use my current location'**
+  String get locationCaptureButton;
+
+  /// No description provided for @locationCaptureFetching.
+  ///
+  /// In en, this message translates to:
+  /// **'Detecting your location...'**
+  String get locationCaptureFetching;
+
+  /// No description provided for @locationCaptureSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Location captured'**
+  String get locationCaptureSuccess;
+
+  /// No description provided for @locationRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please capture your location to continue.'**
+  String get locationRequired;
 
   /// No description provided for @category.
   ///

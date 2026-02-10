@@ -10,6 +10,7 @@ import 'providers/food_provider.dart';
 import 'providers/locale_provider.dart';
 import 'providers/request_provider.dart';
 import 'providers/theme_provider.dart';
+import 'providers/user_provider.dart';
 import 'screens/admin/admin_dashboard_screen.dart';
 import 'screens/auth/login_screen.dart';
 import 'screens/auth/onboarding_screen.dart';
@@ -24,6 +25,7 @@ import 'screens/delivery/delivery_available_tasks_screen.dart';
 import 'screens/delivery/delivery_dashboard_screen.dart';
 import 'screens/delivery/delivery_detail_screen.dart';
 import 'screens/home/home_shell.dart';
+import 'screens/map/community_map_screen.dart';
 import 'screens/provider/provider_dashboard_screen.dart';
 import 'screens/provider/provider_add_listing_screen.dart';
 import 'screens/provider/provider_manage_listings_screen.dart';
@@ -52,6 +54,7 @@ class NutriLinkApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => FoodProvider()),
         ChangeNotifierProvider(create: (_) => RequestProvider()),
         ChangeNotifierProvider(create: (_) => DeliveryProvider()),
+        ChangeNotifierProvider(create: (_) => UserProvider()),
       ],
       child: Consumer2<ThemeProvider, LocaleProvider>(
         builder: (_, themeProvider, localeProvider, __) {
@@ -95,6 +98,7 @@ class NutriLinkApp extends StatelessWidget {
                 return const DeliveryDashboardScreen();
               },
               '/admin-dashboard': (_) => const AdminDashboardScreen(),
+              '/community-map': (_) => const CommunityMapScreen(),
             },
           );
         },

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../constants/app_constants.dart';
 import '../../l10n/app_localizations.dart';
 import '../../models/user_model.dart';
 import '../../providers/auth_provider.dart';
@@ -84,6 +85,16 @@ class _HomeShellState extends State<HomeShell> {
             icon: const Icon(Icons.language),
             onPressed: () => context.read<LocaleProvider>().toggleLocale(),
           ),
+          IconButton(
+            tooltip: strings.communityMap,
+            icon: const Icon(Icons.map),
+            onPressed: () => Navigator.of(context).pushNamed('/community-map'),
+          ),
+          IconButton(
+            tooltip: strings.admin,
+            icon: const Icon(Icons.admin_panel_settings),
+            onPressed: _showAdminAccessDialog,
+          ),
           PopupMenuButton<String>(
             onSelected: (value) {
               if (value == 'logout') {
@@ -105,6 +116,80 @@ class _HomeShellState extends State<HomeShell> {
         child: _buildDashboard(user.role),
       ),
     );
+  }
+
+  Future<void> _showAdminAccessDialog() async {
+    final strings = AppLocalizations.of(context)!;
+    final codeController = TextEditingController();
+    String? errorMessage;
+
+    final bool? unlocked = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) {
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return AlertDialog(
+              title: Row(
+                children: [
+                  const Icon(Icons.admin_panel_settings),
+                  const SizedBox(width: 8),
+                  Text(strings.admin),
+                ],
+              ),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text('Enter the admin access code to continue.'),
+                  const SizedBox(height: 12),
+                  TextField(
+                    controller: codeController,
+                    obscureText: true,
+                    decoration: const InputDecoration(
+                      labelText: 'Access Code',
+                      prefixIcon: Icon(Icons.vpn_key),
+                    ),
+                  ),
+                  if (errorMessage != null) ...[
+                    const SizedBox(height: 8),
+                    Text(
+                      errorMessage!,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.error,
+                      ),
+                    ),
+                  ],
+                ],
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(dialogContext).pop(false),
+                  child: Text(strings.cancel),
+                ),
+                FilledButton(
+                  onPressed: () {
+                    if (codeController.text.trim() == AppConstants.adminAccessCode) {
+                      Navigator.of(dialogContext).pop(true);
+                    } else {
+                      setState(() => errorMessage = 'Invalid admin code');
+                    }
+                  },
+                  child: const Text('Verify'),
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
+
+    codeController.dispose();
+
+    if (unlocked == true && mounted) {
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (_) => const AdminDashboardScreen()),
+      );
+    }
   }
 
   IconData _themeIcon(ThemeMode mode) {

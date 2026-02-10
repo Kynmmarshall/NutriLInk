@@ -189,6 +189,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get notifications => 'Notifications';
 
   @override
+  String get communityMap => 'Carte communautaire';
+
+  @override
+  String get communityMapSubtitle =>
+      'Trouvez les fournisseurs, bénéficiaires et livreurs à proximité.';
+
+  @override
   String get addListing => 'Ajouter une annonce';
 
   @override
@@ -211,6 +218,26 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get location => 'Emplacement';
+
+  @override
+  String get locationCaptureTitle => 'Partagez votre position';
+
+  @override
+  String get locationCaptureSubtitle =>
+      'Nous utilisons votre localisation pour vous afficher sur la carte communautaire.';
+
+  @override
+  String get locationCaptureButton => 'Utiliser ma position actuelle';
+
+  @override
+  String get locationCaptureFetching => 'Détection de votre position...';
+
+  @override
+  String get locationCaptureSuccess => 'Position enregistrée';
+
+  @override
+  String get locationRequired =>
+      'Veuillez enregistrer votre position pour continuer.';
 
   @override
   String get category => 'Catégorie';
