@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../constants/app_constants.dart';
 import '../models/user_model.dart';
 import '../services/auth_service.dart';
 
@@ -100,6 +101,13 @@ class AuthProvider with ChangeNotifier {
   }
 
   Future<bool> loginAsGuest(UserRole role) async {
+    if (role == UserRole.provider) {
+      return login(
+        email: AppConstants.guestProviderEmail,
+        password: AppConstants.guestProviderPassword,
+      );
+    }
+
     try {
       _isLoading = true;
       _error = null;

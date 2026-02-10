@@ -2,6 +2,8 @@ class AppConstants {
   // API Base URL - Update this with your actual backend URL
   static const String baseUrl = 'http://38.242.246.126:4000/api';
   static const String adminAccessCode = 'ADMIN12345@';
+  static const String guestProviderEmail = 'guest-provider@nutrilink.com';
+  static const String guestProviderPassword = 'GuestPass123!';
   
   // API Endpoints
   static const String loginEndpoint = '/auth/login';
