@@ -1,6 +1,6 @@
 class AppConstants {
   // API Base URL - Update this with your actual backend URL
-  static const String baseUrl = 'http://your-api-url.com/api';
+  static const String baseUrl = 'http://38.242.246.126/api';
   
   // API Endpoints
   static const String loginEndpoint = '/auth/login';
