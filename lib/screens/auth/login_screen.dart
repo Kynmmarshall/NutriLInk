@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../constants/app_constants.dart';
 import '../../l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
@@ -20,11 +21,14 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _adminCodeController = TextEditingController();
+  String? _adminCodeError;
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _adminCodeController.dispose();
     super.dispose();
   }
 
@@ -62,6 +66,23 @@ class _LoginScreenState extends State<LoginScreen> {
         SnackBar(content: Text(errorMessage)),
       );
     }
+  }
+
+  Future<void> _unlockAdminAccess() async {
+    final strings = AppLocalizations.of(context)!;
+    final code = _adminCodeController.text.trim();
+
+    if (code.isEmpty) {
+      setState(() => _adminCodeError = strings.requiredField);
+      return;
+    }
+    if (code != AppConstants.adminAccessCode) {
+      setState(() => _adminCodeError = 'Invalid admin code');
+      return;
+    }
+
+    setState(() => _adminCodeError = null);
+    await _loginAsGuest(UserRole.admin);
   }
 
   @override
@@ -204,6 +225,32 @@ class _LoginScreenState extends State<LoginScreen> {
                       isLoading: authProvider.isLoading,
                     ),
                   ],
+                ),
+                const SizedBox(height: 24),
+                Text(
+                  'Admin access override',
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
+                const SizedBox(height: 8),
+                TextField(
+                  controller: _adminCodeController,
+                  obscureText: true,
+                  onChanged: (_) {
+                    if (_adminCodeError != null) {
+                      setState(() => _adminCodeError = null);
+                    }
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Admin Access Code',
+                    prefixIcon: const Icon(Icons.vpn_key),
+                    errorText: _adminCodeError,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                CustomButton(
+                  text: 'Unlock Admin Dashboard',
+                  onPressed: authProvider.isLoading ? null : _unlockAdminAccess,
+                  isLoading: authProvider.isLoading,
                 ),
               ],
             ),
