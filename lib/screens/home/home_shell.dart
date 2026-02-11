@@ -23,6 +23,8 @@ class HomeShell extends StatefulWidget {
 }
 
 class _HomeShellState extends State<HomeShell> {
+  final TextEditingController _adminCodeController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -50,6 +52,12 @@ class _HomeShellState extends State<HomeShell> {
         }
       }
     });
+  }
+
+  @override
+  void dispose() {
+    _adminCodeController.dispose();
+    super.dispose();
   }
 
   @override
@@ -120,7 +128,7 @@ class _HomeShellState extends State<HomeShell> {
 
   Future<void> _showAdminAccessDialog() async {
     final strings = AppLocalizations.of(context)!;
-    final codeController = TextEditingController();
+    final codeController = _adminCodeController..clear();
     String? errorMessage;
 
     final bool? unlocked = await showDialog<bool>(
@@ -182,8 +190,6 @@ class _HomeShellState extends State<HomeShell> {
         );
       },
     );
-
-    codeController.dispose();
 
     if (unlocked == true && mounted) {
       Navigator.of(context).push(
