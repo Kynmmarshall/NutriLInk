@@ -20,6 +20,7 @@ class _CommunityMapScreenState extends State<CommunityMapScreen> {
   final MapController _mapController = MapController();
   latlng.LatLng _mapCenter = const latlng.LatLng(20.0, 0.0);
   double _zoom = 2.5;
+  latlng.LatLng? _userLocation;
   User? _selectedUser;
   bool _isCentering = false;
 
@@ -42,6 +43,7 @@ class _CommunityMapScreenState extends State<CommunityMapScreen> {
       final target = latlng.LatLng(details.latitude, details.longitude);
       setState(() {
         _mapCenter = target;
+        _userLocation = target;
         _zoom = 13;
       });
       _mapController.move(target, _zoom);
@@ -117,6 +119,29 @@ class _CommunityMapScreenState extends State<CommunityMapScreen> {
           }
 
           final markers = _buildMarkers(userProvider.users, strings);
+          if (_userLocation != null) {
+            markers.add(
+              Marker(
+                point: _userLocation!,
+                width: 48,
+                height: 48,
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.white, width: 3),
+                    color: Colors.cyanAccent,
+                  ),
+                  child: const Center(
+                    child: Icon(
+                      Icons.my_location,
+                      size: 22,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+            );
+          }
 
           return Stack(
             children: [
@@ -156,6 +181,10 @@ class _CommunityMapScreenState extends State<CommunityMapScreen> {
                         Wrap(
                           spacing: 12,
                           children: [
+                            const _LegendDot(
+                              color: Colors.cyanAccent,
+                              label: 'You',
+                            ),
                             _LegendDot(
                               color: Colors.blue,
                               label: strings.foodProvider,

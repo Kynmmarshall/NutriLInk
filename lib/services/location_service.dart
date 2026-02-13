@@ -28,7 +28,15 @@ class LocationService {
   static Future<LocationDetails> getCurrentLocation() async {
     final serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      throw LocationException('Location services are disabled.');
+      await Geolocator.openLocationSettings();
+      await Future.delayed(const Duration(milliseconds: 350));
+
+      final reopened = await Geolocator.isLocationServiceEnabled();
+      if (!reopened) {
+        throw LocationException(
+          'Location services are disabled. Please enable GPS/location and try again.',
+        );
+      }
     }
 
     var permission = await Geolocator.checkPermission();
@@ -40,7 +48,10 @@ class LocationService {
     }
 
     if (permission == LocationPermission.deniedForever) {
-      throw LocationException('Location permission permanently denied.');
+      await Geolocator.openAppSettings();
+      throw LocationException(
+        'Location permission permanently denied. Enable it in Settings and relaunch the app.',
+      );
     }
 
     final position = await Geolocator.getCurrentPosition(

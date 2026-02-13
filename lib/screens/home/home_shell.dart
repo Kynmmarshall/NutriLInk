@@ -79,8 +79,10 @@ class _HomeShellState extends State<HomeShell> {
       );
     }
 
-    return Scaffold(
-      appBar: AppBar(
+    return WillPopScope(
+      onWillPop: _handleBackNavigation,
+      child: Scaffold(
+        appBar: AppBar(
         title: Text('${strings.dashboard} · ${user.fullName}'),
         actions: [
           IconButton(
@@ -119,11 +121,20 @@ class _HomeShellState extends State<HomeShell> {
           ),
         ],
       ),
-      body: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 250),
-        child: _buildDashboard(user.role),
+        body: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 250),
+          child: _buildDashboard(user.role),
+        ),
       ),
     );
+  }
+
+  Future<bool> _handleBackNavigation() async {
+    await context.read<AuthProvider>().logout();
+    if (mounted) {
+      Navigator.of(context).pushNamedAndRemoveUntil('/login', (_) => false);
+    }
+    return false;
   }
 
   Future<void> _showAdminAccessDialog() async {
