@@ -49,6 +49,11 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  flutter_launcher_icons: "^0.13.0"
+flutter_icons:
+  image_path: "assets/logo/logo.png"  # Your 1024x1024 icon
+  android: true
+  ios: true
 
 flutter:
   uses-material-design: true
