@@ -1,0 +1,121 @@
+% Hult Prize one-pager for NutriLink
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{ragged2e}
+\usepackage{hyperref}
+
+\definecolor{brand}{HTML}{0B5D43}
+\definecolor{accent}{HTML}{0F2A3D}
+\definecolor{lightgray}{HTML}{F4F6F8}
+\definecolor{textgray}{HTML}{333333}
+
+\hypersetup{colorlinks=true, linkcolor=brand, urlcolor=brand}
+
+\titleformat{\section}{\large\bfseries\color{brand}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{4pt}{2pt}
+
+\setlist[itemize]{leftmargin=*, topsep=1pt, itemsep=1pt}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\begin{minipage}[t]{0.18\textwidth}
+    \includegraphics[width=\linewidth]{../assets/logo/logo.png}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.78\textwidth}
+    {\Huge\bfseries NutriLink}\\[4pt]
+    {\large\color{textgray}Connecting surplus food to food-insecure households through a community-based redistribution platform.}
+\end{minipage}
+
+\vspace{4pt}
+{\color{brand}\rule{\textwidth}{0.6pt}}
+\vspace{4pt}
+
+\begin{minipage}[t]{0.48\textwidth}
+\small
+\section*{Problem}
+\justifying
+Food waste and hunger coexist because surplus food is hard to discover, verify, and deliver quickly. Local providers lack a trusted, real-time way to share excess food with nearby households.\\[4pt]
+\textbf{Evidence:} About one-third (1.3--2.5B tonnes) of food is lost or wasted yearly, around 1B meals/day; this drives 8--10\% of global GHG emissions, with households responsible for ~60\% of waste.
+
+\section*{Solution}
+\justifying
+NutriLink is a mobile-first platform that enables food providers to list surplus items, beneficiaries to request nearby food, and delivery agents to complete safe, timely distribution.
+
+\section*{Product Snapshot}
+\begin{itemize}
+    \item Surplus listings with quantity, expiry, and location.
+    \item Nearby discovery, requests, and status tracking.
+    \item Delivery workflow with pickup and drop-off confirmation.
+    \item Notifications and admin impact monitoring.
+\end{itemize}
+
+\section*{Target Market}
+\begin{itemize}
+    \item Primary users: food providers (restaurants, groceries, institutions), food-insecure households, delivery agents.
+    \item Focus geography: Yaounde, with expansion to wider Cameroon.
+    \item Market sizing: [TAM/SAM/SOM or estimated addressable households/providers].
+\end{itemize}
+
+\section*{Business Model}
+\begin{itemize}
+    \item Provider subscriptions for listing and analytics.
+    \item Small delivery/service fees per fulfilled request.
+    \item NGO/CSR partnerships and institutional dashboards (future).
+\end{itemize}
+
+\section*{Go-to-Market}
+\begin{itemize}
+    \item Pilot with local providers and community partners in Yaounde.
+    \item Leverage campus and NGO networks for beneficiary onboarding.
+    \item Scale to wider Cameroon after validated unit economics.
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\small
+\section*{Impact Model}
+\begin{itemize}
+    \item SDG 2 (Zero Hunger), SDG 12 (Responsible Consumption), SDG 17 (Partnerships).
+    \item Metrics tracked: meals delivered, food waste reduced, beneficiaries served.
+    \item Impact targets: [e.g., 5,000 meals/month, 20 tons waste reduced/year].
+\end{itemize}
+
+\section*{Traction}
+\begin{itemize}
+    \item Pilots, partnerships, LOIs, early users, awards.
+    \item Prototype or MVP status.
+\end{itemize}
+
+\section*{Competitive Advantage}
+\begin{itemize}
+    \item Community-based redistribution with verified roles and accountability.
+    \item Real-time listing expiry controls and delivery workflow.
+    \item Local partnerships that build trust and scale.
+\end{itemize}
+
+\section*{Team}
+\rowcolors{1}{lightgray}{white}
+\begin{tabularx}{\textwidth}{>{\bfseries}l X}
+Kamdeu Yamdjeuson & Product lead\\
+Lembou Ngueumedje & Engineering Lead \\
+\end{tabularx}
+
+\section*{Call to Action}
+\justifying
+We are seeking mentorship, partnerships with food providers, and pilot opportunities to validate and scale NutriLink.\\[4pt]
+\textbf{Contact:} Kynm Marshall \textbar\ kynmmarshall@gmail.com \textbar\ +237 676 093 910
+\end{minipage}
+
+\vspace{4pt}
+{\color{brand}\rule{\textwidth}{0.6pt}}
+\vspace{3pt}
+\small\color{textgray}Hult Prize One-Pager \textbar\ Updated: February 19, 2026
+
+\end{document}
