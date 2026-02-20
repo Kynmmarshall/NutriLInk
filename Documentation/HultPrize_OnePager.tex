@@ -6,39 +6,64 @@
 \usepackage[table]{xcolor}
 \usepackage{tabularx}
 \usepackage{enumitem}
-\usepackage{titlesec}
+\usepackage[explicit]{titlesec}
 \usepackage{ragged2e}
 \usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{eso-pic}
 
 \definecolor{brand}{HTML}{0B5D43}
+\definecolor{branddark}{HTML}{094734}
 \definecolor{accent}{HTML}{0F2A3D}
+\definecolor{accentlight}{HTML}{E7EEF2}
+\definecolor{headerbg}{HTML}{F2F7F5}
 \definecolor{lightgray}{HTML}{F4F6F8}
 \definecolor{textgray}{HTML}{333333}
+\definecolor{muted}{HTML}{6B7280}
 
 \hypersetup{colorlinks=true, linkcolor=brand, urlcolor=brand}
 
-\titleformat{\section}{\large\bfseries\color{brand}}{}{0pt}{}
+\titleformat{\section}[block]
+    {\large\bfseries\color{white}}
+    {}{0pt}
+    {\colorbox{brand}{\parbox{\dimexpr\linewidth-2\fboxsep}{#1}}}
 \titlespacing*{\section}{0pt}{4pt}{2pt}
 
 \setlist[itemize]{leftmargin=*, topsep=1pt, itemsep=1pt}
 \setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.15}
+
+% Subtle background decorations
+\AddToShipoutPictureBG*{%
+    \begin{tikzpicture}[remember picture,overlay]
+        \fill[accentlight] (current page.north east) ++(-1.2cm,-1.0cm) circle (2.4cm);
+        \fill[accentlight!70] (current page.south west) ++(1.2cm,1.4cm) circle (2.8cm);
+        \fill[lightgray] (current page.south east) ++(-0.8cm,2.2cm) circle (1.6cm);
+    \end{tikzpicture}%
+}
 
 \begin{document}
+\colorbox{headerbg}{
+\parbox{\textwidth}{
+\vspace{2pt}
 \begin{minipage}[t]{0.18\textwidth}
     \includegraphics[width=\linewidth]{../assets/logo/logo.png}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.78\textwidth}
-    {\Huge\bfseries NutriLink}\\[4pt]
-    {\large\color{textgray}Connecting surplus food to food-insecure households through a community-based redistribution platform.}
+    {\Huge\bfseries\color{accent} NutriLink}\\[4pt]
+    {\large\color{muted}Connecting surplus food to food-insecure households through a community-based redistribution platform.}
 \end{minipage}
+\vspace{2pt}
+}
+}
 
 \vspace{4pt}
-{\color{brand}\rule{\textwidth}{0.6pt}}
+{\color{accent}\rule{\textwidth}{0.6pt}}
 \vspace{4pt}
 
 \begin{minipage}[t]{0.48\textwidth}
-\small
+\footnotesize
 \section*{Problem}
 \justifying
 Food waste and hunger coexist because surplus food is hard to discover, verify, and deliver quickly. Local providers lack a trusted, real-time way to share excess food with nearby households.\\[4pt]
@@ -79,7 +104,7 @@ NutriLink is a mobile-first platform that enables food providers to list surplus
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.48\textwidth}
-\small
+\footnotesize
 \section*{Impact Model}
 \begin{itemize}
     \item SDG 2 (Zero Hunger), SDG 12 (Responsible Consumption), SDG 17 (Partnerships).
@@ -114,8 +139,8 @@ We are seeking mentorship, partnerships with food providers, and pilot opportuni
 \end{minipage}
 
 \vspace{4pt}
-{\color{brand}\rule{\textwidth}{0.6pt}}
+{\color{accent}\rule{\textwidth}{0.6pt}}
 \vspace{3pt}
-\small\color{textgray}Hult Prize One-Pager \textbar\ Updated: February 19, 2026
+\small\color{muted}Hult Prize One-Pager \textbar\ Updated: February 19, 2026
 
 \end{document}
